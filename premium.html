@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="https://i.ibb.co/m5dp6rV/jspy.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://i.ibb.co/m5dp6rV/jspy.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            
+        }
+
+
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: cyan;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #ddd; 
+            border-radius: 8px;
+        }
+
+        section h2 {
+            color: #333; 
+        }
+
+
+
+        img {
+            width: px;
+            height: 50px;
+        }
+
+
+        #container {
+            text-align: center;
+            max-width: 600px; 
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        #server {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        #server img {
+            border-radius: 50%; 
+            width: 150px; 
+            height: 150px; 
+            margin-bottom: 10px;
+        }
+
+
+        button {
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        @media (max-width: 76px) {
+            #container {
+                text-align: left;
+            }
+        }
+        #botonunirte {
+            width: 150px;
+            height: 150px;
+            
+        }
+
+        #search-form {
+            margin-top: 10px;
+        }
+
+        #search-input {
+            padding: 5px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        #search-button {
+            padding: 5px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #search-results {
+            margin-top: 20px;
+        }
+
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            z-index: -1; 
+        }
+      
+    </style>
+
+</head>
+
+
+<body>
+
+    <video id="video-background" autoplay muted loop>
+        <source src="https://s17.aconvert.com/convert/p3r68-cdx67/v6ghp-zn1ck.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+    </video>
+    
+
+    <nav>
+    
+        <a href="index.html"> <img src="https://www.freeiconspng.com/uploads/free-icon-png-17.png" alt="free" /> </a>
+        <a href="añadir.html"> <img src="https://i.ibb.co/fHdKbWD/a-adir-icono.png" alt="Añadir" /> </a>
+    
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Buscar...">
+            <button type="button" id="search-button">Buscar</button>
+        </form>
+    </nav>
+    
+    </nav>
+
+    <div id="container">
+        <section id="server">
+            <img src="https://i.ibb.co/m5dp6rV/jspy.png" alt="Icono del servidor">
+            <h2>Kly.py</h2>
+            <p>El servidor oficial👑</p>
+            <a href="https://discord.gg/xUdXkXDBTd" target="_blank">
+                <img id="botonunirte" src="https://i.ibb.co/s9dgcXK/boton-unirte-premium.png" alt="Unirte">
+            </a>
+        </section>
+        <div id="search-results"></div>
+    
+    </div>
+    
+
+    <script>
+        document.getElementById('search-button').addEventListener('click', function() {
+            
+            var searchTerm = document.getElementById('search-input').value.toLowerCase();
+
+            
+            var servers = [
+                { name: 'Kly.py', description: 'El servidor oficial👑', link: 'https://discord.gg/xUdXkXDBTd' },
+                // poner mas sv
+            ];
+
+           
+            var matchingServers = servers.filter(function(server) {
+                return server.name.toLowerCase().includes(searchTerm) || server.description.toLowerCase().includes(searchTerm);
+            });
+
+           
+            var resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = '';
+
+            if (matchingServers.length > 0) {
+                matchingServers.forEach(function(server) {
+                    var resultElement = document.createElement('div');
+                    resultElement.innerHTML = `
+                        <h2>${server.name}</h2>
+                        <p>${server.description}</p>
+                        <a href="${server.link}" target="_blank">
+                            <img id="botonunirte" src="https://i.ibb.co/s9dgcXK/boton-unirte-premium.png" alt="Unirte">
+                        </a>
+                    `;
+                    resultsContainer.appendChild(resultElement);
+                });
+            } else {
+                resultsContainer.innerHTML = '<p>No se encontraron resultados.</p>';
+            }
+        });
+    </script>
+
+
+
+
+</body>
+</html>
